@@ -28,6 +28,7 @@ def scannin_word_for_letter(word, letter_list, letter):
 def select_game_language_menu:()
     # A játék kezdő menüje, ahol zászlók közül kiválasztja a játékos a kívánt nyelvet a billenytyűzet nyilaival.
     # Fel és le lehet mozogni és egy hurok mutatja melyik menuponton vagyunk éppen.
+    pass
 
 def menu():
     # 1.) Start a new game 
@@ -37,6 +38,7 @@ def menu():
     # 3.) Score List
     # 4.) Credits
     # 5.) Quit
+    pass
 
 def game_menu():
     # 1.) New game
@@ -47,6 +49,7 @@ def game_menu():
     # 3.) My score
     # 4.) Quit to main menu
     # 5.) Quit Game
+    pass
 
 def welcome_msg():
     f = open("rope.txt", "r")
