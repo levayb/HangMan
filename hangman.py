@@ -4,7 +4,6 @@
 import random
 import time
 import os
-import get key
 from asyncio.tasks import sleep
 # from reportlab.lib.pagesizes import letter
 
@@ -25,7 +24,7 @@ def scannin_word_for_letter(word, letter_list, letter):
             letter_list[i] = letter
     return letter_list
 
-def select_game_language_menu:()
+def select_game_language_menu():
     # A játék kezdő menüje, ahol zászlók közül kiválasztja a játékos a kívánt nyelvet a billenytyűzet nyilaival.
     # Fel és le lehet mozogni és egy hurok mutatja melyik menuponton vagyunk éppen.
     pass
@@ -34,7 +33,7 @@ def menu():
     # 1.) Start a new game 
     #   1.1) Enter your name:
     #   1.1.1) Else: A gép választ egy listából a játékosnak egy random fun nevet
-    # 2. Continue: korábbi játékosok állásai
+    # 2.) Continue: korábbi játékosok állásai
     # 3.) Score List
     # 4.) Credits
     # 5.) Quit
