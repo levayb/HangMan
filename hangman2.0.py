@@ -34,63 +34,50 @@ def scannin_word_for_letter(word, letter_list, letter):
     # Fel és le lehet mozogni és egy hurok mutatja melyik menuponton vagyunk éppen.
     pass
 
-def menu():
-    # 1.) Start a new game
-    #   1.1) Enter your name:
-    #   1.1.1) Else: A gép választ egy listából a játékosnak egy random fun nevet
-    # 2.) Continue: korábbi játékosok állásai
-    # 3.) Score List
-    # 4.) Credits
-    # 5.) Quit
-    pass
 
 def game_menu():
     # 1.) New game
     # 2.) Change game option
-    # 2.2) városnevek
-    # 2.3 nevek
-    # 2.4) állatok
     # 3.) My score
     # 4.) Quit to main menu
     # 5.) Quit Game
     pass
  """
 
-
 def welcome_msg():
     f = open("rope.txt", "r")
     rope = f.read()
     cls()
     print(rope)
-    time.sleep(0.5)
-    cls()  # str = "this is string example....wow!!!"
+    time.sleep(1)
+    cls()
     f = open("i_wanna.txt", "r")
     wanna = f.read()
     print(wanna)
-    user = input("Enter your Name: ")   # print (str.rjust(50, '*'))
+    user = input("Enter your Name: ")
     if user != "":
         print("\nHello", user, "What if I put a rope around your neck? ")
         print("\nIt's time to hang sombody!")
+        time.sleep(1)
     else:
         f = open("evilsmile.txt", "r")
         evil = f.read()
         print(evil)
         print("\nHello random dude I a have a gift for ya! Somthing is missig around  your useless neck. We must fix that")
         print("\nIt's time to hang sombody!")
-    time.sleep(0.5)
+    time.sleep(1)
 
 
-def begining_part():
+def game_rules():
     cls()
-    start = input("\nIf you are ready for this (press enter): ")
-    rules = ('''\nLet's look at the rules:
-    \n\tThis is a hang man game. So you can take 10 mistakes before you being hanged
-    \n\tA word will be chosen at random and
-    \n\tyou must try to guess the word correctly letter by letter
-    \n\tbefore you run out of attempts. Good luck!''')
+    print((12 * "\n"))
+    rules = ('''\n\t\t\t\t\t\tLet's look at the rules:
+    \n\t\t\t\t\t\t\tThis is a hang man game. So you can take 10 mistakes before you being hanged
+    \n\t\t\t\t\t\t\tA word will be chosen at random and
+    \n\t\t\t\t\t\t\tyou must try to guess the word correctly letter by letter
+    \n\t\t\t\t\t\t\tbefore you run out of attempts. Good luck!''')
     print(rules)
-    next_step = input("\nPress enter: ")
-    #print(chr(27) + "[2J")
+    next_step = input("\n\t\t\t\t\t\t\tPress enter: ")
 
 
 def winner_msg():
@@ -126,7 +113,7 @@ def choose_random_word(choice):
 
 
 def user_input():
-    user_letter_input = input("Guess a letter from this list: ")
+    user_letter_input = input("Guess a letter: ")
     save_user_input(user_letter_input)
     return user_letter_input
 
@@ -165,12 +152,6 @@ def letter_list_is_full(letter_list):
             return False
     return True
 
-
-def intro():
-    cls()
-    welcome_msg()
-    begining_part()
-    cls()
 
 
 def print_current_hangman_parts(missing_health):
@@ -255,7 +236,7 @@ def game_loop(game_in_progress, missing_health, letter_list,
         if missing_health >= 10:
             with open("hangman10.txt", "r") as open_file:
                 print(open_file.read())
-            time.sleep(0.5)
+            time.sleep(1)
             cls()
             loose_msg()
             game_in_progress = False
@@ -264,6 +245,7 @@ def game_loop(game_in_progress, missing_health, letter_list,
             print(letter_list)
             winner_msg()
             game_in_progress = False
+            time.sleep(1)
 
 
 def start_a_new_game():
@@ -290,29 +272,15 @@ def select_game_language_menu():
 
 def main_menu_interface():
     print_menu = []
-    print((12 * "\n"))
-    print_menu.append(
-        ("\t" *
-         6) +
-        "1.) Start a game with  names" +
-        "           " +
-        "👶" +
-        "\n")
-    print_menu.append(
-        ("\t" *
-         6) +
-        "2.) Start a game with animals species" +
-        "  " +
-        "👦" +
-        "\n")
-    print_menu.append(
-        ("\t" *
-         6) +
-        "3.) Start a game with pogrammer words" +
-        "  " +
-        "💀" +
-        "\n")
-    print_menu.append(("\t" * 6) + "4.) rules" + "\n")
+    with open("helloka.txt", "r") as f:
+        hi = f.readlines()
+        for line in hi:
+            print_menu.append(("\t" * 6) + line.strip())
+    print_menu.append("\n")
+    print_menu.append(("\t" * 6) + "1.) Start a game with names" + "\t\t" + "👶" + "\n")
+    print_menu.append(("\t" * 6) + "2.) Start a game with animals species" + "\t" + "👦" + "\n")
+    print_menu.append(("\t" * 6) + "3.) Start a game with programmer words" + "\t" + "💀" + "\n")
+    print_menu.append(("\t" * 6) + "4.) Rules" + "\n")
     print_menu.append(("\t" * 6) + "5.) Quit" + "\n")
     return print_menu
 
@@ -330,7 +298,8 @@ def user_choice():
 
 
 def menu_choice():
-    while True:
+    escape_progi = False
+    while not escape_progi:
         clear_input_buffer()
         menu = main_menu_interface()
         print_menu_interface(menu)
@@ -338,45 +307,27 @@ def menu_choice():
         if choice == "1":
             os.system("clear")
             welcome_msg()
-            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(
-                choice)
-            game_loop(
-                game_in_progress,
-                missing_health,
-                letter_list,
-                choosen_word,
-                original_letter_list)
+            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(choice)
+            game_loop(game_in_progress, missing_health, letter_list, choosen_word, original_letter_list)
 
         elif choice == "2":
             os.system("clear")
             welcome_msg()
-            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(
-                choice)
-            game_loop(
-                game_in_progress,
-                missing_health,
-                letter_list,
-                choosen_word,
-                original_letter_list)
+            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(choice)
+            game_loop(game_in_progress, missing_health, letter_list, choosen_word, original_letter_list)
 
         elif choice == "3":
             os.system("clear")
             welcome_msg()
-            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(
-                choice)
-            game_loop(
-                game_in_progress,
-                missing_health,
-                letter_list,
-                choosen_word,
-                original_letter_list)
+            game_in_progress, missing_health, letter_list, choosen_word, original_letter_list = game_loop_pre_definitions(choice)
+            game_loop(game_in_progress, missing_health, letter_list, choosen_word, original_letter_list)
 
         elif choice == "4":
             os.system("clear")
-            begining_part()
+            game_rules()
 
         elif choice == "5":
-            exit_fuckin_funcion()
+            escape_progi = True
 
 
 def main():

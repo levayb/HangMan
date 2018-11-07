@@ -1,4 +1,4 @@
-albatross
+albatros
 alligator
 anaconda
 armadillo
@@ -10,8 +10,6 @@ carp
 cat
 chameleon
 chicken
-chimpanzee
-chinchilla
 cobra
 cow
 coyote
@@ -78,7 +76,6 @@ chicken
 dog
 canary
 goat
-hedgehog
 pig
 pigeon
 rabbit
@@ -87,6 +84,6 @@ turkey
 donkey
 goldfis
 horse
-Llama
+lama
 Sheep
 Yak
